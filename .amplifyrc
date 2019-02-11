@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "alimente-20190211150019-authRole",
+            "UnauthRoleArn": "arn:aws:iam::006655026955:role/alimente-20190211150019-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::006655026955:role/alimente-20190211150019-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "alimente-20190211150019-deployment",
+            "UnauthRoleName": "alimente-20190211150019-unauthRole",
+            "StackName": "alimente-20190211150019",
+            "StackId": "arn:aws:cloudformation:us-east-2:006655026955:stack/alimente-20190211150019/aa260c50-2e37-11e9-8845-0a1513ed47e4"
+        }
+    }
+}

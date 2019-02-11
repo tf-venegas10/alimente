@@ -1,0 +1,56 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "alimente-20190211150019-authRole",
+			"UnauthRoleArn": "arn:aws:iam::006655026955:role/alimente-20190211150019-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::006655026955:role/alimente-20190211150019-authRole",
+			"Region": "us-east-2",
+			"DeploymentBucketName": "alimente-20190211150019-deployment",
+			"UnauthRoleName": "alimente-20190211150019-unauthRole",
+			"StackName": "alimente-20190211150019",
+			"StackId": "arn:aws:cloudformation:us-east-2:006655026955:stack/alimente-20190211150019/aa260c50-2e37-11e9-8845-0a1513ed47e4"
+		}
+	},
+	"auth": {
+		"cognito1d186f18": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/alimente-20190211150019-deployment/amplify-cfn-templates/auth/cognito1d186f18-cloudformation-template.yml",
+				"logicalId": "authcognito1d186f18"
+			},
+			"lastPushTimeStamp": "2019-02-11T20:40:16.206Z",
+			"output": {
+				"AppClientSecret": "1almjgk27shuvdls4kvrbmrlro6217p4r995auk958kd0pg15ggd",
+				"UserPoolId": "us-east-2_k7x2yrgfB",
+				"AppClientIDWeb": "58pglca3glc5egckgh9frd333k",
+				"AppClientID": "3v6esmjf0e020n8pn62h45gif2",
+				"IdentityPoolId": "us-east-2:5069ea8e-f9d1-4881-a304-d5c98f986ca6",
+				"IdentityPoolName": "cognito1d186f18_identitypool_1d186f18",
+				"UserPoolName": "cognito1d186f18_userpool_1d186f18"
+			},
+			"lastPushDirHash": "hgOt7rCsvIqfsod4smB1kj+QAaQ="
+		}
+	},
+	"api": {
+		"alimente": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "AMAZON_COGNITO_USER_POOLS",
+				"GraphQLAPIIdOutput": "eowqu4lhwfcotc6jwqbvo6w2zy",
+				"GraphQLAPIEndpointOutput": "https://46kep5rcfrghxaoseuu2lelycu.appsync-api.us-east-2.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-jdowm7or5fhi5dlbjomhg7tknm",
+				"AuthCognitoUserPoolIdOutput": "us-east-2_k7x2yrgfB",
+				"AuthCognitoUserPoolNativeClientId": "See UserPool: us-east-2_k7x2yrgfB",
+				"AuthCognitoUserPoolJSClientId": "See UserPool: us-east-2_k7x2yrgfB"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/alimente-20190211150019-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apialimente"
+			},
+			"lastPushTimeStamp": "2019-02-11T20:40:16.206Z",
+			"lastPushDirHash": "GA4iBmNt7BpAH206FVB3UU3oz/Y="
+		}
+	}
+}

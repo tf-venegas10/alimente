@@ -1,0 +1,888 @@
+type Paciente {
+  id: ID!
+  nombre: String!
+  tipoDocumento: String!
+  documento: String!
+  fechaNacimiento: String!
+  genero: String!
+  pesoKg: Int!
+  alturaCm: Int!
+  fibrasGranos: Int
+  grasasGramos: Int
+  carbohidratosGramos: Int
+  proteinasGramos: Int
+  calorias: Int
+  activoDesayuno: Boolean
+  activoAlmuerzo: Boolean
+  activoComida: Boolean
+  activoDesayunoHasta: String
+  activoAlmuerzoHasta: String
+  activoComidaHasta: String
+  tipoDeMenu: TipoDeMenu
+  comidas(filter: ModelComidaFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelComidaConnection
+}
+
+type TipoDeMenu {
+  id: ID!
+  tipo: String!
+  pacientes: Paciente
+  menu: Menu
+}
+
+type Comida {
+  id: ID!
+  paciente: Paciente
+  servicio: Servicio
+  alimentosRel(filter: ModelAlimentoComidaRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAlimentoComidaRelConnection
+  proporcionesDeCadaAlimento: [Int]
+}
+
+type Menu {
+  id: ID!
+  nombre: String
+  alimentosRel(filter: ModelMenuAlimentoRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMenuAlimentoRelConnection
+  preparacionesRel(filter: ModelMenuPreparacionRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMenuPreparacionRelConnection
+  tipoDeMenu: TipoDeMenu
+  servicio: Servicio
+}
+
+type Servicio {
+  id: ID!
+  fecha: String!
+  hora: String!
+  menus(filter: ModelMenuFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMenuConnection
+  comida: Comida
+}
+
+type AlimentoComidaRel {
+  alimento: Alimento
+  comida: Comida
+}
+
+type MenuAlimentoRel {
+  alimento: Alimento
+  menu: Menu
+}
+
+type MenuPreparacionRel {
+  preparacion: Preparacion
+  menu: Menu
+}
+
+type AlimentosPreparacionesRel {
+  preparacion: Preparacion
+  alimento: Alimento
+}
+
+type Alimento {
+  id: ID!
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+  comidasRel(filter: ModelAlimentoComidaRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAlimentoComidaRelConnection
+  preparacionesRel(filter: ModelAlimentosPreparacionesRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAlimentosPreparacionesRelConnection
+  menusRel(filter: ModelMenuAlimentoRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMenuAlimentoRelConnection
+}
+
+type Preparacion {
+  id: ID!
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+  alimentosRel(filter: ModelAlimentosPreparacionesRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAlimentosPreparacionesRelConnection
+  menusRel(filter: ModelMenuPreparacionRelFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMenuPreparacionRelConnection
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPacienteConnection {
+  items: [Paciente]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelPacienteFilterInput {
+  id: ModelIDFilterInput
+  nombre: ModelStringFilterInput
+  tipoDocumento: ModelStringFilterInput
+  documento: ModelStringFilterInput
+  fechaNacimiento: ModelStringFilterInput
+  genero: ModelStringFilterInput
+  pesoKg: ModelIntFilterInput
+  alturaCm: ModelIntFilterInput
+  fibrasGranos: ModelIntFilterInput
+  grasasGramos: ModelIntFilterInput
+  carbohidratosGramos: ModelIntFilterInput
+  proteinasGramos: ModelIntFilterInput
+  calorias: ModelIntFilterInput
+  activoDesayuno: ModelBooleanFilterInput
+  activoAlmuerzo: ModelBooleanFilterInput
+  activoComida: ModelBooleanFilterInput
+  activoDesayunoHasta: ModelStringFilterInput
+  activoAlmuerzoHasta: ModelStringFilterInput
+  activoComidaHasta: ModelStringFilterInput
+  and: [ModelPacienteFilterInput]
+  or: [ModelPacienteFilterInput]
+  not: ModelPacienteFilterInput
+}
+
+type Query {
+  getPaciente(id: ID!): Paciente
+  listPacientes(filter: ModelPacienteFilterInput, limit: Int, nextToken: String): ModelPacienteConnection
+  getTipoDeMenu(id: ID!): TipoDeMenu
+  listTipoDeMenus(filter: ModelTipoDeMenuFilterInput, limit: Int, nextToken: String): ModelTipoDeMenuConnection
+  getComida(id: ID!): Comida
+  listComidas(filter: ModelComidaFilterInput, limit: Int, nextToken: String): ModelComidaConnection
+  getMenu(id: ID!): Menu
+  listMenus(filter: ModelMenuFilterInput, limit: Int, nextToken: String): ModelMenuConnection
+  getServicio(id: ID!): Servicio
+  listServicios(filter: ModelServicioFilterInput, limit: Int, nextToken: String): ModelServicioConnection
+  getAlimentoComidaRel(id: ID!): AlimentoComidaRel
+  listAlimentoComidaRels(filter: ModelAlimentoComidaRelFilterInput, limit: Int, nextToken: String): ModelAlimentoComidaRelConnection
+  getMenuAlimentoRel(id: ID!): MenuAlimentoRel
+  listMenuAlimentoRels(filter: ModelMenuAlimentoRelFilterInput, limit: Int, nextToken: String): ModelMenuAlimentoRelConnection
+  getMenuPreparacionRel(id: ID!): MenuPreparacionRel
+  listMenuPreparacionRels(filter: ModelMenuPreparacionRelFilterInput, limit: Int, nextToken: String): ModelMenuPreparacionRelConnection
+  getAlimentosPreparacionesRel(id: ID!): AlimentosPreparacionesRel
+  listAlimentosPreparacionesRels(filter: ModelAlimentosPreparacionesRelFilterInput, limit: Int, nextToken: String): ModelAlimentosPreparacionesRelConnection
+  getAlimento(id: ID!): Alimento
+  listAlimentos(filter: ModelAlimentoFilterInput, limit: Int, nextToken: String): ModelAlimentoConnection
+  getPreparacion(id: ID!): Preparacion
+  listPreparacions(filter: ModelPreparacionFilterInput, limit: Int, nextToken: String): ModelPreparacionConnection
+  searchPacientes(filter: SearchablePacienteFilterInput, sort: SearchablePacienteSortInput, limit: Int, nextToken: Int): SearchablePacienteConnection
+  searchMenus(filter: SearchableMenuFilterInput, sort: SearchableMenuSortInput, limit: Int, nextToken: Int): SearchableMenuConnection
+  searchServicios(filter: SearchableServicioFilterInput, sort: SearchableServicioSortInput, limit: Int, nextToken: Int): SearchableServicioConnection
+  searchAlimentos(filter: SearchableAlimentoFilterInput, sort: SearchableAlimentoSortInput, limit: Int, nextToken: Int): SearchableAlimentoConnection
+  searchPreparacions(filter: SearchablePreparacionFilterInput, sort: SearchablePreparacionSortInput, limit: Int, nextToken: Int): SearchablePreparacionConnection
+}
+
+input CreatePacienteInput {
+  id: ID
+  nombre: String!
+  tipoDocumento: String!
+  documento: String!
+  fechaNacimiento: String!
+  genero: String!
+  pesoKg: Int!
+  alturaCm: Int!
+  fibrasGranos: Int
+  grasasGramos: Int
+  carbohidratosGramos: Int
+  proteinasGramos: Int
+  calorias: Int
+  activoDesayuno: Boolean
+  activoAlmuerzo: Boolean
+  activoComida: Boolean
+  activoDesayunoHasta: String
+  activoAlmuerzoHasta: String
+  activoComidaHasta: String
+  pacienteTipoDeMenuId: ID
+}
+
+input UpdatePacienteInput {
+  id: ID!
+  nombre: String
+  tipoDocumento: String
+  documento: String
+  fechaNacimiento: String
+  genero: String
+  pesoKg: Int
+  alturaCm: Int
+  fibrasGranos: Int
+  grasasGramos: Int
+  carbohidratosGramos: Int
+  proteinasGramos: Int
+  calorias: Int
+  activoDesayuno: Boolean
+  activoAlmuerzo: Boolean
+  activoComida: Boolean
+  activoDesayunoHasta: String
+  activoAlmuerzoHasta: String
+  activoComidaHasta: String
+  pacienteTipoDeMenuId: ID
+}
+
+input DeletePacienteInput {
+  id: ID
+}
+
+type Mutation {
+  createPaciente(input: CreatePacienteInput!): Paciente
+  updatePaciente(input: UpdatePacienteInput!): Paciente
+  deletePaciente(input: DeletePacienteInput!): Paciente
+  createTipoDeMenu(input: CreateTipoDeMenuInput!): TipoDeMenu
+  updateTipoDeMenu(input: UpdateTipoDeMenuInput!): TipoDeMenu
+  deleteTipoDeMenu(input: DeleteTipoDeMenuInput!): TipoDeMenu
+  createComida(input: CreateComidaInput!): Comida
+  updateComida(input: UpdateComidaInput!): Comida
+  deleteComida(input: DeleteComidaInput!): Comida
+  createMenu(input: CreateMenuInput!): Menu
+  updateMenu(input: UpdateMenuInput!): Menu
+  deleteMenu(input: DeleteMenuInput!): Menu
+  createServicio(input: CreateServicioInput!): Servicio
+  updateServicio(input: UpdateServicioInput!): Servicio
+  deleteServicio(input: DeleteServicioInput!): Servicio
+  createAlimentoComidaRel(input: CreateAlimentoComidaRelInput!): AlimentoComidaRel
+  updateAlimentoComidaRel(input: UpdateAlimentoComidaRelInput!): AlimentoComidaRel
+  deleteAlimentoComidaRel(input: DeleteAlimentoComidaRelInput!): AlimentoComidaRel
+  createMenuAlimentoRel(input: CreateMenuAlimentoRelInput!): MenuAlimentoRel
+  updateMenuAlimentoRel(input: UpdateMenuAlimentoRelInput!): MenuAlimentoRel
+  deleteMenuAlimentoRel(input: DeleteMenuAlimentoRelInput!): MenuAlimentoRel
+  createMenuPreparacionRel(input: CreateMenuPreparacionRelInput!): MenuPreparacionRel
+  updateMenuPreparacionRel(input: UpdateMenuPreparacionRelInput!): MenuPreparacionRel
+  deleteMenuPreparacionRel(input: DeleteMenuPreparacionRelInput!): MenuPreparacionRel
+  createAlimentosPreparacionesRel(input: CreateAlimentosPreparacionesRelInput!): AlimentosPreparacionesRel
+  updateAlimentosPreparacionesRel(input: UpdateAlimentosPreparacionesRelInput!): AlimentosPreparacionesRel
+  deleteAlimentosPreparacionesRel(input: DeleteAlimentosPreparacionesRelInput!): AlimentosPreparacionesRel
+  createAlimento(input: CreateAlimentoInput!): Alimento
+  updateAlimento(input: UpdateAlimentoInput!): Alimento
+  deleteAlimento(input: DeleteAlimentoInput!): Alimento
+  createPreparacion(input: CreatePreparacionInput!): Preparacion
+  updatePreparacion(input: UpdatePreparacionInput!): Preparacion
+  deletePreparacion(input: DeletePreparacionInput!): Preparacion
+}
+
+type Subscription {
+  onCreatePaciente: Paciente @aws_subscribe(mutations: ["createPaciente"])
+  onUpdatePaciente: Paciente @aws_subscribe(mutations: ["updatePaciente"])
+  onDeletePaciente: Paciente @aws_subscribe(mutations: ["deletePaciente"])
+  onCreateTipoDeMenu: TipoDeMenu @aws_subscribe(mutations: ["createTipoDeMenu"])
+  onUpdateTipoDeMenu: TipoDeMenu @aws_subscribe(mutations: ["updateTipoDeMenu"])
+  onDeleteTipoDeMenu: TipoDeMenu @aws_subscribe(mutations: ["deleteTipoDeMenu"])
+  onCreateComida: Comida @aws_subscribe(mutations: ["createComida"])
+  onUpdateComida: Comida @aws_subscribe(mutations: ["updateComida"])
+  onDeleteComida: Comida @aws_subscribe(mutations: ["deleteComida"])
+  onCreateMenu: Menu @aws_subscribe(mutations: ["createMenu"])
+  onUpdateMenu: Menu @aws_subscribe(mutations: ["updateMenu"])
+  onDeleteMenu: Menu @aws_subscribe(mutations: ["deleteMenu"])
+  onCreateServicio: Servicio @aws_subscribe(mutations: ["createServicio"])
+  onUpdateServicio: Servicio @aws_subscribe(mutations: ["updateServicio"])
+  onDeleteServicio: Servicio @aws_subscribe(mutations: ["deleteServicio"])
+  onCreateAlimentoComidaRel: AlimentoComidaRel @aws_subscribe(mutations: ["createAlimentoComidaRel"])
+  onUpdateAlimentoComidaRel: AlimentoComidaRel @aws_subscribe(mutations: ["updateAlimentoComidaRel"])
+  onDeleteAlimentoComidaRel: AlimentoComidaRel @aws_subscribe(mutations: ["deleteAlimentoComidaRel"])
+  onCreateMenuAlimentoRel: MenuAlimentoRel @aws_subscribe(mutations: ["createMenuAlimentoRel"])
+  onUpdateMenuAlimentoRel: MenuAlimentoRel @aws_subscribe(mutations: ["updateMenuAlimentoRel"])
+  onDeleteMenuAlimentoRel: MenuAlimentoRel @aws_subscribe(mutations: ["deleteMenuAlimentoRel"])
+  onCreateMenuPreparacionRel: MenuPreparacionRel @aws_subscribe(mutations: ["createMenuPreparacionRel"])
+  onUpdateMenuPreparacionRel: MenuPreparacionRel @aws_subscribe(mutations: ["updateMenuPreparacionRel"])
+  onDeleteMenuPreparacionRel: MenuPreparacionRel @aws_subscribe(mutations: ["deleteMenuPreparacionRel"])
+  onCreateAlimentosPreparacionesRel: AlimentosPreparacionesRel @aws_subscribe(mutations: ["createAlimentosPreparacionesRel"])
+  onUpdateAlimentosPreparacionesRel: AlimentosPreparacionesRel @aws_subscribe(mutations: ["updateAlimentosPreparacionesRel"])
+  onDeleteAlimentosPreparacionesRel: AlimentosPreparacionesRel @aws_subscribe(mutations: ["deleteAlimentosPreparacionesRel"])
+  onCreateAlimento: Alimento @aws_subscribe(mutations: ["createAlimento"])
+  onUpdateAlimento: Alimento @aws_subscribe(mutations: ["updateAlimento"])
+  onDeleteAlimento: Alimento @aws_subscribe(mutations: ["deleteAlimento"])
+  onCreatePreparacion: Preparacion @aws_subscribe(mutations: ["createPreparacion"])
+  onUpdatePreparacion: Preparacion @aws_subscribe(mutations: ["updatePreparacion"])
+  onDeletePreparacion: Preparacion @aws_subscribe(mutations: ["deletePreparacion"])
+}
+
+type ModelTipoDeMenuConnection {
+  items: [TipoDeMenu]
+  nextToken: String
+}
+
+input ModelTipoDeMenuFilterInput {
+  id: ModelIDFilterInput
+  tipo: ModelStringFilterInput
+  and: [ModelTipoDeMenuFilterInput]
+  or: [ModelTipoDeMenuFilterInput]
+  not: ModelTipoDeMenuFilterInput
+}
+
+input CreateTipoDeMenuInput {
+  id: ID
+  tipo: String!
+  tipoDeMenuPacientesId: ID
+  tipoDeMenuMenuId: ID
+}
+
+input UpdateTipoDeMenuInput {
+  id: ID!
+  tipo: String
+  tipoDeMenuPacientesId: ID
+  tipoDeMenuMenuId: ID
+}
+
+input DeleteTipoDeMenuInput {
+  id: ID
+}
+
+type ModelComidaConnection {
+  items: [Comida]
+  nextToken: String
+}
+
+input ModelComidaFilterInput {
+  id: ModelIDFilterInput
+  proporcionesDeCadaAlimento: ModelIntFilterInput
+  and: [ModelComidaFilterInput]
+  or: [ModelComidaFilterInput]
+  not: ModelComidaFilterInput
+}
+
+input CreateComidaInput {
+  id: ID
+  proporcionesDeCadaAlimento: [Int]
+  comidaPacienteId: ID
+  comidaServicioId: ID
+}
+
+input UpdateComidaInput {
+  id: ID!
+  proporcionesDeCadaAlimento: [Int]
+  comidaPacienteId: ID
+  comidaServicioId: ID
+}
+
+input DeleteComidaInput {
+  id: ID
+}
+
+type ModelMenuConnection {
+  items: [Menu]
+  nextToken: String
+}
+
+input ModelMenuFilterInput {
+  id: ModelIDFilterInput
+  nombre: ModelStringFilterInput
+  and: [ModelMenuFilterInput]
+  or: [ModelMenuFilterInput]
+  not: ModelMenuFilterInput
+}
+
+input CreateMenuInput {
+  id: ID
+  nombre: String
+  menuTipoDeMenuId: ID
+  menuServicioId: ID
+}
+
+input UpdateMenuInput {
+  id: ID!
+  nombre: String
+  menuTipoDeMenuId: ID
+  menuServicioId: ID
+}
+
+input DeleteMenuInput {
+  id: ID
+}
+
+type ModelServicioConnection {
+  items: [Servicio]
+  nextToken: String
+}
+
+input ModelServicioFilterInput {
+  id: ModelIDFilterInput
+  fecha: ModelStringFilterInput
+  hora: ModelStringFilterInput
+  and: [ModelServicioFilterInput]
+  or: [ModelServicioFilterInput]
+  not: ModelServicioFilterInput
+}
+
+input CreateServicioInput {
+  id: ID
+  fecha: String!
+  hora: String!
+  servicioComidaId: ID
+}
+
+input UpdateServicioInput {
+  id: ID!
+  fecha: String
+  hora: String
+  servicioComidaId: ID
+}
+
+input DeleteServicioInput {
+  id: ID
+}
+
+type ModelAlimentoComidaRelConnection {
+  items: [AlimentoComidaRel]
+  nextToken: String
+}
+
+input ModelAlimentoComidaRelFilterInput {
+  and: [ModelAlimentoComidaRelFilterInput]
+  or: [ModelAlimentoComidaRelFilterInput]
+  not: ModelAlimentoComidaRelFilterInput
+}
+
+input CreateAlimentoComidaRelInput {
+  alimentoComidaRelAlimentoId: ID
+  alimentoComidaRelComidaId: ID
+}
+
+input UpdateAlimentoComidaRelInput {
+  alimentoComidaRelAlimentoId: ID
+  alimentoComidaRelComidaId: ID
+}
+
+input DeleteAlimentoComidaRelInput {
+  id: ID
+}
+
+type ModelMenuAlimentoRelConnection {
+  items: [MenuAlimentoRel]
+  nextToken: String
+}
+
+input ModelMenuAlimentoRelFilterInput {
+  and: [ModelMenuAlimentoRelFilterInput]
+  or: [ModelMenuAlimentoRelFilterInput]
+  not: ModelMenuAlimentoRelFilterInput
+}
+
+input CreateMenuAlimentoRelInput {
+  menuAlimentoRelAlimentoId: ID
+  menuAlimentoRelMenuId: ID
+}
+
+input UpdateMenuAlimentoRelInput {
+  menuAlimentoRelAlimentoId: ID
+  menuAlimentoRelMenuId: ID
+}
+
+input DeleteMenuAlimentoRelInput {
+  id: ID
+}
+
+type ModelMenuPreparacionRelConnection {
+  items: [MenuPreparacionRel]
+  nextToken: String
+}
+
+input ModelMenuPreparacionRelFilterInput {
+  and: [ModelMenuPreparacionRelFilterInput]
+  or: [ModelMenuPreparacionRelFilterInput]
+  not: ModelMenuPreparacionRelFilterInput
+}
+
+input CreateMenuPreparacionRelInput {
+  menuPreparacionRelPreparacionId: ID
+  menuPreparacionRelMenuId: ID
+}
+
+input UpdateMenuPreparacionRelInput {
+  menuPreparacionRelPreparacionId: ID
+  menuPreparacionRelMenuId: ID
+}
+
+input DeleteMenuPreparacionRelInput {
+  id: ID
+}
+
+type ModelAlimentosPreparacionesRelConnection {
+  items: [AlimentosPreparacionesRel]
+  nextToken: String
+}
+
+input ModelAlimentosPreparacionesRelFilterInput {
+  and: [ModelAlimentosPreparacionesRelFilterInput]
+  or: [ModelAlimentosPreparacionesRelFilterInput]
+  not: ModelAlimentosPreparacionesRelFilterInput
+}
+
+input CreateAlimentosPreparacionesRelInput {
+  alimentosPreparacionesRelPreparacionId: ID
+  alimentosPreparacionesRelAlimentoId: ID
+}
+
+input UpdateAlimentosPreparacionesRelInput {
+  alimentosPreparacionesRelPreparacionId: ID
+  alimentosPreparacionesRelAlimentoId: ID
+}
+
+input DeleteAlimentosPreparacionesRelInput {
+  id: ID
+}
+
+type ModelAlimentoConnection {
+  items: [Alimento]
+  nextToken: String
+}
+
+input ModelAlimentoFilterInput {
+  id: ModelIDFilterInput
+  nombre: ModelStringFilterInput
+  calorias: ModelIntFilterInput
+  proteinas: ModelIntFilterInput
+  carbohidratos: ModelIntFilterInput
+  grasas: ModelIntFilterInput
+  fibras: ModelIntFilterInput
+  unidad: ModelStringFilterInput
+  and: [ModelAlimentoFilterInput]
+  or: [ModelAlimentoFilterInput]
+  not: ModelAlimentoFilterInput
+}
+
+input CreateAlimentoInput {
+  id: ID
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+}
+
+input UpdateAlimentoInput {
+  id: ID!
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+}
+
+input DeleteAlimentoInput {
+  id: ID
+}
+
+type ModelPreparacionConnection {
+  items: [Preparacion]
+  nextToken: String
+}
+
+input ModelPreparacionFilterInput {
+  id: ModelIDFilterInput
+  nombre: ModelStringFilterInput
+  calorias: ModelIntFilterInput
+  proteinas: ModelIntFilterInput
+  carbohidratos: ModelIntFilterInput
+  grasas: ModelIntFilterInput
+  fibras: ModelIntFilterInput
+  unidad: ModelStringFilterInput
+  and: [ModelPreparacionFilterInput]
+  or: [ModelPreparacionFilterInput]
+  not: ModelPreparacionFilterInput
+}
+
+input CreatePreparacionInput {
+  id: ID
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+}
+
+input UpdatePreparacionInput {
+  id: ID!
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+}
+
+input DeletePreparacionInput {
+  id: ID
+}
+
+input SearchableStringFilterInput {
+  ne: String
+  eq: String
+  match: String
+  matchPhrase: String
+  matchPhrasePrefix: String
+  multiMatch: String
+  exists: Boolean
+  wildcard: String
+  regexp: String
+}
+
+input SearchableIDFilterInput {
+  ne: ID
+  eq: ID
+  match: ID
+  matchPhrase: ID
+  matchPhrasePrefix: ID
+  multiMatch: ID
+  exists: Boolean
+  wildcard: ID
+  regexp: ID
+}
+
+input SearchableIntFilterInput {
+  ne: Int
+  gt: Int
+  lt: Int
+  gte: Int
+  lte: Int
+  eq: Int
+  range: [Int]
+}
+
+input SearchableFloatFilterInput {
+  ne: Float
+  gt: Float
+  lt: Float
+  gte: Float
+  lte: Float
+  eq: Float
+  range: [Float]
+}
+
+input SearchableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input SearchablePacienteFilterInput {
+  id: SearchableIDFilterInput
+  nombre: SearchableStringFilterInput
+  tipoDocumento: SearchableStringFilterInput
+  documento: SearchableStringFilterInput
+  fechaNacimiento: SearchableStringFilterInput
+  genero: SearchableStringFilterInput
+  pesoKg: SearchableIntFilterInput
+  alturaCm: SearchableIntFilterInput
+  fibrasGranos: SearchableIntFilterInput
+  grasasGramos: SearchableIntFilterInput
+  carbohidratosGramos: SearchableIntFilterInput
+  proteinasGramos: SearchableIntFilterInput
+  calorias: SearchableIntFilterInput
+  activoDesayuno: SearchableBooleanFilterInput
+  activoAlmuerzo: SearchableBooleanFilterInput
+  activoComida: SearchableBooleanFilterInput
+  activoDesayunoHasta: SearchableStringFilterInput
+  activoAlmuerzoHasta: SearchableStringFilterInput
+  activoComidaHasta: SearchableStringFilterInput
+  and: [SearchablePacienteFilterInput]
+  or: [SearchablePacienteFilterInput]
+  not: SearchablePacienteFilterInput
+}
+
+enum SearchableSortDirection {
+  asc
+  desc
+}
+
+enum SearchablePacienteSortableFields {
+  id
+  nombre
+  tipoDocumento
+  documento
+  fechaNacimiento
+  genero
+  pesoKg
+  alturaCm
+  fibrasGranos
+  grasasGramos
+  carbohidratosGramos
+  proteinasGramos
+  calorias
+  activoDesayuno
+  activoAlmuerzo
+  activoComida
+  activoDesayunoHasta
+  activoAlmuerzoHasta
+  activoComidaHasta
+}
+
+input SearchablePacienteSortInput {
+  field: SearchablePacienteSortableFields
+  direction: SearchableSortDirection
+}
+
+type SearchablePacienteConnection {
+  items: [Paciente]
+  nextToken: String
+}
+
+input SearchableMenuFilterInput {
+  id: SearchableIDFilterInput
+  nombre: SearchableStringFilterInput
+  and: [SearchableMenuFilterInput]
+  or: [SearchableMenuFilterInput]
+  not: SearchableMenuFilterInput
+}
+
+enum SearchableMenuSortableFields {
+  id
+  nombre
+}
+
+input SearchableMenuSortInput {
+  field: SearchableMenuSortableFields
+  direction: SearchableSortDirection
+}
+
+type SearchableMenuConnection {
+  items: [Menu]
+  nextToken: String
+}
+
+input SearchableServicioFilterInput {
+  id: SearchableIDFilterInput
+  fecha: SearchableStringFilterInput
+  hora: SearchableStringFilterInput
+  and: [SearchableServicioFilterInput]
+  or: [SearchableServicioFilterInput]
+  not: SearchableServicioFilterInput
+}
+
+enum SearchableServicioSortableFields {
+  id
+  fecha
+  hora
+}
+
+input SearchableServicioSortInput {
+  field: SearchableServicioSortableFields
+  direction: SearchableSortDirection
+}
+
+type SearchableServicioConnection {
+  items: [Servicio]
+  nextToken: String
+}
+
+input SearchableAlimentoFilterInput {
+  id: SearchableIDFilterInput
+  nombre: SearchableStringFilterInput
+  calorias: SearchableIntFilterInput
+  proteinas: SearchableIntFilterInput
+  carbohidratos: SearchableIntFilterInput
+  grasas: SearchableIntFilterInput
+  fibras: SearchableIntFilterInput
+  unidad: SearchableStringFilterInput
+  and: [SearchableAlimentoFilterInput]
+  or: [SearchableAlimentoFilterInput]
+  not: SearchableAlimentoFilterInput
+}
+
+enum SearchableAlimentoSortableFields {
+  id
+  nombre
+  calorias
+  proteinas
+  carbohidratos
+  grasas
+  fibras
+  unidad
+}
+
+input SearchableAlimentoSortInput {
+  field: SearchableAlimentoSortableFields
+  direction: SearchableSortDirection
+}
+
+type SearchableAlimentoConnection {
+  items: [Alimento]
+  nextToken: String
+}
+
+input SearchablePreparacionFilterInput {
+  id: SearchableIDFilterInput
+  nombre: SearchableStringFilterInput
+  calorias: SearchableIntFilterInput
+  proteinas: SearchableIntFilterInput
+  carbohidratos: SearchableIntFilterInput
+  grasas: SearchableIntFilterInput
+  fibras: SearchableIntFilterInput
+  unidad: SearchableStringFilterInput
+  and: [SearchablePreparacionFilterInput]
+  or: [SearchablePreparacionFilterInput]
+  not: SearchablePreparacionFilterInput
+}
+
+enum SearchablePreparacionSortableFields {
+  id
+  nombre
+  calorias
+  proteinas
+  carbohidratos
+  grasas
+  fibras
+  unidad
+}
+
+input SearchablePreparacionSortInput {
+  field: SearchablePreparacionSortableFields
+  direction: SearchableSortDirection
+}
+
+type SearchablePreparacionConnection {
+  items: [Preparacion]
+  nextToken: String
+}

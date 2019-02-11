@@ -1,0 +1,95 @@
+type Paciente @model @searchable {
+  id: ID!
+  nombre: String!
+  tipoDocumento: String!
+  documento: String!
+  fechaNacimiento: String!
+  genero: String!
+  pesoKg: Int!
+  alturaCm: Int!
+  fibrasGranos: Int
+  grasasGramos: Int
+  carbohidratosGramos: Int
+  proteinasGramos: Int
+  calorias: Int
+  activoDesayuno: Boolean
+  activoAlmuerzo: Boolean
+  activoComida: Boolean
+  activoDesayunoHasta: String
+  activoAlmuerzoHasta: String
+  activoComidaHasta: String
+  tipoDeMenu: TipoDeMenu @connection(name: "pacienteTipoDeMenu")
+  comidas: [Comida] @connection(name: "comidasPaciente")
+}
+type TipoDeMenu @model {
+  id: ID!
+  tipo: String!
+  pacientes: Paciente @connection(name: "pacienteTipoDeMenu")
+  menu: Menu @connection(name: "menuTipo")
+}
+type Comida @model {
+  id: ID!
+  paciente: Paciente @connection(name: "comidasPaciente")
+  servicio: Servicio @connection(name: "servicioComidas")
+  alimentosRel: [AlimentoComidaRel] @connection(name: "comidasAlimentos")
+  proporcionesDeCadaAlimento: [Int]
+}
+
+type Menu @model @searchable {
+  id: ID!
+  nombre: String
+  alimentosRel: [MenuAlimentoRel] @connection(name: "menusAlimentos")
+  preparacionesRel: [MenuPreparacionRel] @connection(name: "menusPreparaciones")
+  tipoDeMenu: TipoDeMenu @connection(name: "menuTipo")
+  servicio: Servicio @connection(name: "servicioMenus")
+}
+type Servicio @model @searchable {
+  id: ID!
+  fecha: String!
+  hora: String!
+  menus: [Menu] @connection(name: "servicioMenus")
+  comida: Comida @connection(name: "servicioComidas")
+}
+
+type AlimentoComidaRel @model {
+  alimento: Alimento @connection(name: "alimentosComidas")
+  comida: Comida @connection(name: "comidasAlimentos")
+}
+type MenuAlimentoRel @model {
+  alimento: Alimento @connection(name: "alimentosMenu")
+  menu: Menu @connection(name: "menusAlimentos")
+}
+type MenuPreparacionRel @model {
+  preparacion: Preparacion @connection(name: "preparacionesMenus")
+  menu: Menu @connection(name: "menusPreparaciones")
+}
+type AlimentosPreparacionesRel @model {
+  preparacion: Preparacion @connection(name: "preparacionesAlimentos")
+  alimento: Alimento @connection(name: "alimentosPreparaciones")
+}
+
+type Alimento @model @searchable {
+  id: ID!
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+  comidasRel: [AlimentoComidaRel] @connection(name: "alimentosComidas")
+  preparacionesRel: [AlimentosPreparacionesRel] @connection(name: "alimentosPreparaciones")
+  menusRel: [MenuAlimentoRel] @connection(name: "alimentosMenu")
+}
+type Preparacion @model @searchable {
+  id: ID!
+  nombre: String
+  calorias: Int
+  proteinas: Int
+  carbohidratos: Int
+  grasas: Int
+  fibras: Int
+  unidad: String
+  alimentosRel: [AlimentosPreparacionesRel] @connection(name: "preparacionesAlimentos")
+  menusRel: [MenuPreparacionRel] @connection(name: "preparacionesMenus")
+}
