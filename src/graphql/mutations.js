@@ -11,7 +11,7 @@ export const createPaciente = `mutation CreatePaciente($input: CreatePacienteInp
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -34,7 +34,7 @@ export const createPaciente = `mutation CreatePaciente($input: CreatePacienteInp
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -71,7 +71,7 @@ export const updatePaciente = `mutation UpdatePaciente($input: UpdatePacienteInp
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -94,7 +94,7 @@ export const updatePaciente = `mutation UpdatePaciente($input: UpdatePacienteInp
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -131,7 +131,7 @@ export const deletePaciente = `mutation DeletePaciente($input: DeletePacienteInp
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -154,7 +154,7 @@ export const deletePaciente = `mutation DeletePaciente($input: DeletePacienteInp
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -194,7 +194,7 @@ export const createTipoDeMenu = `mutation CreateTipoDeMenu($input: CreateTipoDeM
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -248,7 +248,7 @@ export const updateTipoDeMenu = `mutation UpdateTipoDeMenu($input: UpdateTipoDeM
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -302,7 +302,7 @@ export const deleteTipoDeMenu = `mutation DeleteTipoDeMenu($input: DeleteTipoDeM
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -355,7 +355,7 @@ export const createComida = `mutation CreateComida($input: CreateComidaInput!) {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -406,7 +406,7 @@ export const updateComida = `mutation UpdateComida($input: UpdateComidaInput!) {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -457,7 +457,7 @@ export const deleteComida = `mutation DeleteComida($input: DeleteComidaInput!) {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -520,7 +520,7 @@ export const createMenu = `mutation CreateMenu($input: CreateMenuInput!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -576,7 +576,7 @@ export const updateMenu = `mutation UpdateMenu($input: UpdateMenuInput!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -632,7 +632,7 @@ export const deleteMenu = `mutation DeleteMenu($input: DeleteMenuInput!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -687,7 +687,7 @@ export const createServicio = `mutation CreateServicio($input: CreateServicioInp
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -735,7 +735,7 @@ export const updateServicio = `mutation UpdateServicio($input: UpdateServicioInp
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -783,7 +783,7 @@ export const deleteServicio = `mutation DeleteServicio($input: DeleteServicioInp
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -840,7 +840,7 @@ export const createAlimentoComidaRel = `mutation CreateAlimentoComidaRel($input:
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -897,7 +897,7 @@ export const updateAlimentoComidaRel = `mutation UpdateAlimentoComidaRel($input:
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -954,7 +954,7 @@ export const deleteAlimentoComidaRel = `mutation DeleteAlimentoComidaRel($input:
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos

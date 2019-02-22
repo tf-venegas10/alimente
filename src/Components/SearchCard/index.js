@@ -8,13 +8,13 @@ const SearchCard = (props) => (
         Nombre: {props.nombre}
       </Col>
       <Col sm={6} md={3}>
-        Plan de Salud: {props.planSalud}
-      </Col>
-      <Col sm={6} md={3}>
         Edad: {props.anos} años {props.meses} meses
       </Col>
       <Col sm={6} md={3}>
         Genero: {props.genero}
+      </Col>
+      <Col sm={6} md={3}>
+        Identificación: {props.identificacion}
       </Col>
     </Row>
   </CardBody>

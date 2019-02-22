@@ -1,5 +1,6 @@
-import { dateToAge } from './DateToAge';
+import { fechaAEdad } from './FechaAEdad';
 import { indiceMasaCorporal } from './IMC';
 import { ritmoMetabolicoBasal } from './RMB';
 import { requerimientosMacros } from './RequerimientosMacros';
-export { dateToAge, indiceMasaCorporal, ritmoMetabolicoBasal, requerimientosMacros };
+import { activoComida } from './ActivoComida';
+export { fechaAEdad, indiceMasaCorporal, ritmoMetabolicoBasal, requerimientosMacros, activoComida };

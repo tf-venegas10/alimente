@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { NavBarPaciente } from './NavBar';
-import AddVisit from './AddVisit';
-import History from './History';
-import PacientCard from './PacientCard';
+import { NavBarPaciente } from '../NavBar';
+import AddVisit from '../AddVisit';
+import History from '../History';
+import PacientCard from '../PacientCard';
 
 const PacientHome = (props) => {
   return (

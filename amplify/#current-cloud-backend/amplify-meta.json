@@ -19,7 +19,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/alimente-20190211150019-deployment/amplify-cfn-templates/auth/cognito1d186f18-cloudformation-template.yml",
 				"logicalId": "authcognito1d186f18"
 			},
-			"lastPushTimeStamp": "2019-02-11T20:40:16.206Z",
+			"lastPushTimeStamp": "2019-02-18T18:50:43.506Z",
 			"output": {
 				"AppClientSecret": "1almjgk27shuvdls4kvrbmrlro6217p4r995auk958kd0pg15ggd",
 				"UserPoolId": "us-east-2_k7x2yrgfB",
@@ -49,8 +49,8 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/alimente-20190211150019-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apialimente"
 			},
-			"lastPushTimeStamp": "2019-02-11T20:40:16.206Z",
-			"lastPushDirHash": "GA4iBmNt7BpAH206FVB3UU3oz/Y="
+			"lastPushTimeStamp": "2019-02-18T18:50:49.975Z",
+			"lastPushDirHash": "zTcCgViJFExj7cCbiKi7zru6zIE="
 		}
 	}
 }

@@ -7,7 +7,7 @@ type Paciente @model @searchable {
   genero: String!
   pesoKg: Int!
   alturaCm: Int!
-  fibrasGranos: Int
+  fibrasGramos: Int
   grasasGramos: Int
   carbohidratosGramos: Int
   proteinasGramos: Int

@@ -11,10 +11,10 @@ const actividadFisica = 1.2;
 
 export const ritmoMetabolicoBasal = (pesoKg, alturaCm, genero, edadAnos) => {
   switch (genero) {
-    case 'HOMBRE':
-      return (66.473 + 13.752 * pesoKg + 5.0033 * alturaCm - 6.755 * edadAnos) * actividadFisica;
-    case 'MUJER':
-      return (655.0955 + 9.463 * pesoKg + 1.8496 * alturaCm - 4.6756 * edadAnos) * actividadFisica;
+    case 'Hombre':
+      return Math.round((66.473 + 13.752 * pesoKg + 5.0033 * alturaCm - 6.755 * edadAnos) * actividadFisica);
+    case 'Mujer':
+      return Math.round((655.0955 + 9.463 * pesoKg + 1.8496 * alturaCm - 4.6756 * edadAnos) * actividadFisica);
     default:
       return 0;
   }

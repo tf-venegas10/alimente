@@ -35,7 +35,7 @@ class GlobalNav extends React.PureComponent {
     return (
       <Navbar color="light" light expand="md" className={this.props.className}>
         <Link to="/" className="navbar-brand">
-          AliMente
+          Pacientes
         </Link>
         <NavbarToggler onClick={this.toggleNav} />
         <Collapse isOpen={this.state.open} navbar>

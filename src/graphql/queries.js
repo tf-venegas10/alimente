@@ -11,7 +11,7 @@ export const getPaciente = `query GetPaciente($id: ID!) {
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -34,7 +34,7 @@ export const getPaciente = `query GetPaciente($id: ID!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -76,7 +76,7 @@ export const listPacientes = `query ListPacientes(
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -112,7 +112,7 @@ export const getTipoDeMenu = `query GetTipoDeMenu($id: ID!) {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -171,7 +171,7 @@ export const listTipoDeMenus = `query ListTipoDeMenus(
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -204,7 +204,7 @@ export const getComida = `query GetComida($id: ID!) {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -260,7 +260,7 @@ export const listComidas = `query ListComidas(
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -310,7 +310,7 @@ export const getMenu = `query GetMenu($id: ID!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -394,7 +394,7 @@ export const getServicio = `query GetServicio($id: ID!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -473,7 +473,7 @@ export const getAlimentoComidaRel = `query GetAlimentoComidaRel($id: ID!) {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -865,7 +865,7 @@ export const searchPacientes = `query SearchPacientes(
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos

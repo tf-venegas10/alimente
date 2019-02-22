@@ -11,7 +11,7 @@ export const onCreatePaciente = `subscription OnCreatePaciente {
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -34,7 +34,7 @@ export const onCreatePaciente = `subscription OnCreatePaciente {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -71,7 +71,7 @@ export const onUpdatePaciente = `subscription OnUpdatePaciente {
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -94,7 +94,7 @@ export const onUpdatePaciente = `subscription OnUpdatePaciente {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -131,7 +131,7 @@ export const onDeletePaciente = `subscription OnDeletePaciente {
     genero
     pesoKg
     alturaCm
-    fibrasGranos
+    fibrasGramos
     grasasGramos
     carbohidratosGramos
     proteinasGramos
@@ -154,7 +154,7 @@ export const onDeletePaciente = `subscription OnDeletePaciente {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -194,7 +194,7 @@ export const onCreateTipoDeMenu = `subscription OnCreateTipoDeMenu {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -248,7 +248,7 @@ export const onUpdateTipoDeMenu = `subscription OnUpdateTipoDeMenu {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -302,7 +302,7 @@ export const onDeleteTipoDeMenu = `subscription OnDeleteTipoDeMenu {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -355,7 +355,7 @@ export const onCreateComida = `subscription OnCreateComida {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -406,7 +406,7 @@ export const onUpdateComida = `subscription OnUpdateComida {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -457,7 +457,7 @@ export const onDeleteComida = `subscription OnDeleteComida {
       genero
       pesoKg
       alturaCm
-      fibrasGranos
+      fibrasGramos
       grasasGramos
       carbohidratosGramos
       proteinasGramos
@@ -520,7 +520,7 @@ export const onCreateMenu = `subscription OnCreateMenu {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -576,7 +576,7 @@ export const onUpdateMenu = `subscription OnUpdateMenu {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -632,7 +632,7 @@ export const onDeleteMenu = `subscription OnDeleteMenu {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -687,7 +687,7 @@ export const onCreateServicio = `subscription OnCreateServicio {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -735,7 +735,7 @@ export const onUpdateServicio = `subscription OnUpdateServicio {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -783,7 +783,7 @@ export const onDeleteServicio = `subscription OnDeleteServicio {
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -840,7 +840,7 @@ export const onCreateAlimentoComidaRel = `subscription OnCreateAlimentoComidaRel
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -897,7 +897,7 @@ export const onUpdateAlimentoComidaRel = `subscription OnUpdateAlimentoComidaRel
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos
@@ -954,7 +954,7 @@ export const onDeleteAlimentoComidaRel = `subscription OnDeleteAlimentoComidaRel
         genero
         pesoKg
         alturaCm
-        fibrasGranos
+        fibrasGramos
         grasasGramos
         carbohidratosGramos
         proteinasGramos

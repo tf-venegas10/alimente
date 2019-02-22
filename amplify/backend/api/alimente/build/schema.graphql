@@ -7,7 +7,7 @@ type Paciente {
   genero: String!
   pesoKg: Int!
   alturaCm: Int!
-  fibrasGranos: Int
+  fibrasGramos: Int
   grasasGramos: Int
   carbohidratosGramos: Int
   proteinasGramos: Int
@@ -175,7 +175,7 @@ input ModelPacienteFilterInput {
   genero: ModelStringFilterInput
   pesoKg: ModelIntFilterInput
   alturaCm: ModelIntFilterInput
-  fibrasGranos: ModelIntFilterInput
+  fibrasGramos: ModelIntFilterInput
   grasasGramos: ModelIntFilterInput
   carbohidratosGramos: ModelIntFilterInput
   proteinasGramos: ModelIntFilterInput
@@ -230,7 +230,7 @@ input CreatePacienteInput {
   genero: String!
   pesoKg: Int!
   alturaCm: Int!
-  fibrasGranos: Int
+  fibrasGramos: Int
   grasasGramos: Int
   carbohidratosGramos: Int
   proteinasGramos: Int
@@ -253,7 +253,7 @@ input UpdatePacienteInput {
   genero: String
   pesoKg: Int
   alturaCm: Int
-  fibrasGranos: Int
+  fibrasGramos: Int
   grasasGramos: Int
   carbohidratosGramos: Int
   proteinasGramos: Int
@@ -716,7 +716,7 @@ input SearchablePacienteFilterInput {
   genero: SearchableStringFilterInput
   pesoKg: SearchableIntFilterInput
   alturaCm: SearchableIntFilterInput
-  fibrasGranos: SearchableIntFilterInput
+  fibrasGramos: SearchableIntFilterInput
   grasasGramos: SearchableIntFilterInput
   carbohidratosGramos: SearchableIntFilterInput
   proteinasGramos: SearchableIntFilterInput
@@ -746,7 +746,7 @@ enum SearchablePacienteSortableFields {
   genero
   pesoKg
   alturaCm
-  fibrasGranos
+  fibrasGramos
   grasasGramos
   carbohidratosGramos
   proteinasGramos
