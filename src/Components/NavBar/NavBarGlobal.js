@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
@@ -16,65 +14,61 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 //import Link from './Link';
-class GlobalNav extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { open: false, dropdownOpen: false };
-    this.toggleNav = this.toggleNav.bind(this);
-    this.toggleDropdown = this.toggleDropdown.bind(this);
-  }
-  toggleNav = () => {
-    this.setState((prevState) => ({ open: !prevState.open }));
+const GlobalNav = ({ className }) => {
+  const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropDownOpen] = useState(false);
+
+  const toggleNav = () => {
+    setOpen(!open);
   };
-  toggleDropdown = () => {
-    this.setState((prevState) => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
+  const toggleDropdown = () => {
+    setDropDownOpen(!dropdownOpen);
   };
-  render() {
-    return (
-      <Navbar color="light" light expand="md" className={this.props.className}>
-        <Link to="/" className="navbar-brand">
-          Pacientes
-        </Link>
-        <NavbarToggler onClick={this.toggleNav} />
-        <Collapse isOpen={this.state.open} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <Link to="/" className="nav-link">
-                Buscar paciente
+
+  return (
+    <Navbar color="light" light expand="md" className={className}>
+      <Link to="/" className="navbar-brand">
+        Pacientes
+      </Link>
+      <NavbarToggler onClick={toggleNav} />
+      <Collapse isOpen={open} navbar>
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <Link to="/" className="nav-link">
+              Buscar paciente
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="" className="nav-link">
+              Menu de hoy
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/paciente" className="nav-link">
+              Paciente:{' '}
+            </Link>
+          </NavItem>
+          <Dropdown nav inNavbar isOpen={dropdownOpen} toggle={toggleDropdown}>
+            <DropdownToggle nav caret>
+              Agregar
+            </DropdownToggle>
+            <DropdownMenu right>
+              <Link to="/paciente/nuevo" className="dropdown-item">
+                Paciente
               </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="" className="nav-link">
-                Menu de hoy
+              <Link to="/alimento/nuevo" className="dropdown-item">
+                Alimento
               </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/paciente" className="nav-link">
-                Paciente:{' '}
-              </Link>
-            </NavItem>
-            <Dropdown nav inNavbar isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-              <DropdownToggle nav caret>
-                Agregar
-              </DropdownToggle>
-              <DropdownMenu right>
-                <Link to="/nuevo/paciente" className="dropdown-item">
-                  Paciente
-                </Link>
-                <DropdownItem>Alimento</DropdownItem>
-                <DropdownItem>Preparación</DropdownItem>
-                <DropdownItem>Menu</DropdownItem>
-                <DropdownItem divider />
-              </DropdownMenu>
-            </Dropdown>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    );
-  }
-}
+              <DropdownItem>Preparación</DropdownItem>
+              <DropdownItem>Menu</DropdownItem>
+              <DropdownItem divider />
+            </DropdownMenu>
+          </Dropdown>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
+};
 
 const NavBarGlobal = styled(GlobalNav)`
   background-color: green;

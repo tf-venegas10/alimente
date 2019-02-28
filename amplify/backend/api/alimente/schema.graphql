@@ -52,14 +52,17 @@ type Servicio @model @searchable {
 }
 
 type AlimentoComidaRel @model {
+  id: ID!
   alimento: Alimento @connection(name: "alimentosComidas")
   comida: Comida @connection(name: "comidasAlimentos")
 }
 type MenuAlimentoRel @model {
+  id: ID!
   alimento: Alimento @connection(name: "alimentosMenu")
   menu: Menu @connection(name: "menusAlimentos")
 }
 type MenuPreparacionRel @model {
+  id: ID!
   preparacion: Preparacion @connection(name: "preparacionesMenus")
   menu: Menu @connection(name: "menusPreparaciones")
 }

@@ -55,16 +55,19 @@ type Servicio {
 }
 
 type AlimentoComidaRel {
+  id: ID!
   alimento: Alimento
   comida: Comida
 }
 
 type MenuAlimentoRel {
+  id: ID!
   alimento: Alimento
   menu: Menu
 }
 
 type MenuPreparacionRel {
+  id: ID!
   preparacion: Preparacion
   menu: Menu
 }
@@ -474,17 +477,20 @@ type ModelAlimentoComidaRelConnection {
 }
 
 input ModelAlimentoComidaRelFilterInput {
+  id: ModelIDFilterInput
   and: [ModelAlimentoComidaRelFilterInput]
   or: [ModelAlimentoComidaRelFilterInput]
   not: ModelAlimentoComidaRelFilterInput
 }
 
 input CreateAlimentoComidaRelInput {
+  id: ID
   alimentoComidaRelAlimentoId: ID
   alimentoComidaRelComidaId: ID
 }
 
 input UpdateAlimentoComidaRelInput {
+  id: ID!
   alimentoComidaRelAlimentoId: ID
   alimentoComidaRelComidaId: ID
 }
@@ -499,17 +505,20 @@ type ModelMenuAlimentoRelConnection {
 }
 
 input ModelMenuAlimentoRelFilterInput {
+  id: ModelIDFilterInput
   and: [ModelMenuAlimentoRelFilterInput]
   or: [ModelMenuAlimentoRelFilterInput]
   not: ModelMenuAlimentoRelFilterInput
 }
 
 input CreateMenuAlimentoRelInput {
+  id: ID
   menuAlimentoRelAlimentoId: ID
   menuAlimentoRelMenuId: ID
 }
 
 input UpdateMenuAlimentoRelInput {
+  id: ID!
   menuAlimentoRelAlimentoId: ID
   menuAlimentoRelMenuId: ID
 }
@@ -524,17 +533,20 @@ type ModelMenuPreparacionRelConnection {
 }
 
 input ModelMenuPreparacionRelFilterInput {
+  id: ModelIDFilterInput
   and: [ModelMenuPreparacionRelFilterInput]
   or: [ModelMenuPreparacionRelFilterInput]
   not: ModelMenuPreparacionRelFilterInput
 }
 
 input CreateMenuPreparacionRelInput {
+  id: ID
   menuPreparacionRelPreparacionId: ID
   menuPreparacionRelMenuId: ID
 }
 
 input UpdateMenuPreparacionRelInput {
+  id: ID!
   menuPreparacionRelPreparacionId: ID
   menuPreparacionRelMenuId: ID
 }

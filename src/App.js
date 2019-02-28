@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
-import NewPacient from './Components/Pacient/NewPacient';
-import PacientHome from './Components/Pacient/PacientHome';
+import PacienteHome from './Components/Pacient/PacienteHome';
+import AlimentoHome from './Components/Alimento/AlimentoHome';
 import Search from './Components/Search';
 import { NavBarGlobal } from './Components/NavBar';
 import AWSAppSyncClient from 'aws-appsync';
@@ -47,17 +47,13 @@ const withProvider = () => (
     </Rehydrated>
   </ApolloProvider>
 );
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <NavBarGlobal />
-        <Route exact path="/" component={Search} />
-        <Route path="/paciente" component={PacientHome} />
-        <Route path="/nuevo/paciente" component={NewPacient} />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <NavBarGlobal />
+    <Route exact path="/" component={Search} />
+    <Route path="/paciente" component={PacienteHome} />
+    <Route path="/alimento" component={AlimentoHome} />
+  </div>
+);
 
 export default withAuthenticator(withProvider);
